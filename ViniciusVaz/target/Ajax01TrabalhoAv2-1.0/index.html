@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/maskedinput-1.3.js"></script>
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/bootbox.min.js"></script>
+        <script type="text/javascript" src="js/alertify.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+        <link rel="stylesheet" type="text/css" href="css/alertify.core.css"/>
+        <link rel="stylesheet" type="text/css" href="css/alertify.default.css"/>
+
+        <style>
+            
+            
+            .glyphicon-pencil{
+                color:#5cb85c
+            }
+            .glyphicon-remove{
+                color:#D83526
+            }
+            .center{
+                text-align: center;
+            }
+            span{
+                font-weight:bold;
+            }
+            .tamanho{
+                width: 30%;
+            }
+        </style>
+    </head>
+
+    <body>
+                <div id="alert">
+            
+        </div>
+        <div class="container jumbotron">
+            <div> 
+                <h2 class="center form-group"><span class="label label-primary center">Cadastro de Clientes</span></h2>
+            </div>
+            <form id="formCadastro">
+                <div class="row form-group">
+                    <div class="col-xs-1" id = "labelCpf">
+                        <span>CPF:</span>
+                    </div>
+                    <div class="col-xs-3" id = "tabcpf"> 
+                        <input class="form-control" placeholder="CPF" type="text" id="txt_cpf" onkeypress="mascara(this, cpf_mask)"  maxlength="14" />
+                    </div>
+                    <div class="col-xs-1" id = "labelNome">
+                        <span>Nome:</span>
+                    </div> 
+                    <div class="col-xs-7" id = "tabnome">
+                        <input class="form-control" type="text" id="txt_nome"  placeholder="Nome" maxlength="50" />
+                    </div> 
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1" id = "labelEstadoCivel">
+                        <span>Estado Civil:</span>
+                    </div> 
+                    <div class="col-xs-3" id = "tabEstadoCivel">
+                        <select class="form-control" id = "txt_estadoCivil">
+                            <option>Escolher Estado Civil</option>
+                            <option>Solteiro</option>
+                            <option>Casado</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-1" id = "labelSexo">
+                        <span>Sexo:</span>
+                    </div> 
+                    <div class="col-xs-3" id = "tabsexo">
+                        <select class="form-control" id = "txt_sexo">
+                            <option >Escolher Sexo</option>
+                            <option>Masculino</option>
+                            <option>Feminino</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-1" id = "labelTelefone">
+                        <span>Telefone:</span>
+                    </div> 
+                    <div class="col-xs-3" id = "tabtelefone">
+                        <input class="form-control" type = "text"  id = "txt_telefone" maxlength = "11" placeholder="Telefone" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1" id="labelCep">
+                        <span>CEP:</span>             
+                    </div>
+                    <div class="col-xs-2" id="tabCep">
+                        <input class="form-control" id="txt_cep" placeholder="CEP" />
+                    </div>
+                    <div class="col-xs-1" id="labelEndereco">
+                        <span>Endereço:</span>             
+                    </div>
+                    <div class="col-xs-8" id = "tabendereco">
+                        <input class="form-control" type = "text" maxlength = "80" id = "txt_endereco" placeholder="Endereço" disabled/>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1" id = "labelBairro">
+                        <span>Bairro</span>
+                    </div> 
+                    <div class="col-xs-3" id = "tabBairro">
+                        <input class="form-control" placeholder="Bairro" id="txt_bairro" disabled/>
+                    </div>
+                    <div class="col-xs-1" id = "labelEstado">
+                        <span>Estado:</span>
+                    </div> 
+                    <div class="col-xs-3" id = "tablEstado">
+                        <input class="form-control" placeholder="Estado" id="txt_estado" disabled/>                      
+                    </div>
+                    <div class="col-xs-1" id = "labelCidade">
+                        <span>Cidade:</span>
+                    </div> 
+                    <div class="col-xs-3" id = "tabCidade">
+                        <input class="form-control" placeholder="Cidade" id="txt_cidade" disabled />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1" id = "labelEmail">
+                        <span>E-Mail:</span>
+                    </div>    
+                    <div class="col-xs-5" id = "tabemail">
+                        <input class="form-control"  id = "txt_email" type ="text" maxlength = "40" placeholder="E-Mail" />
+                    </div>
+                    <div class="col-xs-1" id = "labelSenha">
+                        <span>Senha:</span>
+                    </div> 
+                    <div class="col-xs-5" id="tabsenha">
+                        <input class="form-control" type = "password" maxlength = "15" id = "txt_senha" placeholder="Senha" />
+                    </div>	
+                </div>
+                <div class="row form-group">
+                    <div id = "tabpromo">
+                        <div class="col-xs-12">
+                            <span class="label label-success" id="promo"> Receber Promoções?</span>
+                        </div>
+                        <div  class="col-xs-6">
+                            <input type = "radio" name= "radio" id = "txt_receberpS" onclick="Mensagem()"> Sim 
+                            <input type = "radio" name= "radio" id = "txt_receberpN" onclick="Mensagem()" > Não
+                        </div>
+                    </div>
+                </div>
+
+                <div id="txt_div" class="label label-info"></div>
+
+                <div class="row form-group">
+                    <div class="col-xs-1" id = "labelObs">
+                        <span>Observação:</span>
+                    </div>
+                    <div class="col-xs-11"  id = "tabobs">
+                        <textarea class="form-control"  placeholder="Observação" id = "txt_obs" maxlength="200"></textarea>
+                    </div>
+                </div>
+                <div class="center">
+                    <input class="btn btn-success" type ="submit" id='enviar' value = "Enviar" /> 
+                    <input class="btn btn-danger" type = "button" id="cancelar" value = "Cancelar" />                      
+                </div>
+            </form>		
+        </div>
+
+        <div align="center">
+            <table id = "tbLista" class="table table-bordered">           
+            </table>
+        </div>
+    </body>
+</html>
